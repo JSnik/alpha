@@ -26,6 +26,13 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   ngAfterViewInit() {
+    // const loader = new GLTFLoader();
+    // loader.load('../assets/EPISODE-FBX.gltf', (gltf: any) => {
+    //   // Add the model to the scene
+    //   this.scene.add(gltf.scene);
+    // }, undefined, (error: any) => {
+    //   console.error(error);
+    // });
     const loader = new GLTFLoader();
     loader.load('../assets/EPISODE-FBX.gltf', (gltf: any) => {
       // Add the model to the scene
@@ -33,6 +40,19 @@ export class AppComponent implements OnInit, AfterViewInit{
     }, undefined, (error: any) => {
       console.error(error);
     });
+
+    // Add an ambient light to the scene
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    this.scene.add(ambientLight);
+
+    // Add a point light to the scene
+    const pointLight = new THREE.PointLight(0xffffff, 0.5);
+    pointLight.position.set(0, 10, 10);
+    this.scene.add(pointLight);
+
+    // Adjust the camera position and lookAt target
+    this.camera.position.set(0, 0, 10);
+    this.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
     setTimeout(() => {
       this.animate();
