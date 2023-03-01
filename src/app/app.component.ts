@@ -27,7 +27,7 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   ngAfterViewInit() {
     const loader = new GLTFLoader();
-    loader.load('../assets/z8nkcy5651cl.gltf', (gltf: any) => {
+    loader.load('../assets/EPISODE-FBX.gltf', (gltf: any) => {
       // Add the model to the scene
       this.scene.add(gltf.scene);
     }, undefined, (error: any) => {
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit, AfterViewInit{
 
     setTimeout(() => {
       this.animate();
-    }, 2000)
+    }, )
   }
 
   animate() {
